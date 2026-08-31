@@ -1,22 +1,23 @@
 services:
-  litellm:
+  litellm-gateway:
     image: ghcr.io/berriai/litellm:main-latest
     container_name: litellm-security-gateway
     restart: unless-stopped
     ports:
       - "4000:4000"
     environment:
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@litellm-db:5432/${POSTGRES_DB}
       - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY}
       - UI_USERNAME=${UI_USERNAME}
       - UI_PASSWORD=${UI_PASSWORD}
-      - PRESIDIO_ANALYZER_URL=http://presidio-analyzer:3000
-      - PRESIDIO_ANONYMIZER_URL=http://presidio-anonymizer:3000
+      - OLLAMA_API_BASE=${OLLAMA_API_BASE}
+      - PRESIDIO_ANALYZER_API_BASE=http://presidio-analyzer:3000
+      - PRESIDIO_ANONYMIZER_API_BASE=http://presidio-anonymizer:3000
     volumes:
       - ./config/litellm_config.yaml:/app/config.yaml:ro
-    command: ["--config", "/app/config.yaml", "--port", "4000", "--detailed_debug"]
+    command: ["--config", "/app/config.yaml", "--port", "4000", "--host", "0.0.0.0"]
     depends_on:
-      - postgres
+      - litellm-db
       - presidio-analyzer
       - presidio-anonymizer
 
@@ -25,25 +26,26 @@ services:
     container_name: presidio-analyzer
     restart: unless-stopped
     ports:
-      - "5001:3000"
+      - "5002:3000"
 
   presidio-anonymizer:
     image: mcr.microsoft.com/presidio-anonymizer:latest
     container_name: presidio-anonymizer
     restart: unless-stopped
     ports:
-      - "5002:3000"
+      - "5001:3000"
 
-  postgres:
+  litellm-db:
     image: postgres:16-alpine
-    container_name: litellm-postgres
+    container_name: litellm-postgres-db
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - litellm_db_data:/var/lib/postgresql/data
 
 volumes:
-  pgdata:
+  litellm_db_data:
+  
