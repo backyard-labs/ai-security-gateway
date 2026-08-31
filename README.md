@@ -17,6 +17,7 @@ This project implements a **Defensive Gateway Architecture** designed to act as 
 
 ## 2. Architectural Blueprint & Data Flow
 
+```text
 +-----------------------------------------------------------------------------------+
 | 1. CLIENT CONSUMPTION LAYER                                                       |
 |    - Open WebUI, Enterprise Chatbots, SOC Automation Scripts, Low-Code Pipelines  |
@@ -82,8 +83,6 @@ Microsoft Presidio is an open-source data protection framework.
 All transaction metadata—including virtual key identities, latency metrics, token consumption, and timestamped forensic logs—is committed to an isolated PostgreSQL relational store. This provides accountability without storing unredacted sensitive payloads.
 
 ---
-
-## 5. Repository Structure
 
 ai-security-gateway/
 ├── config/
