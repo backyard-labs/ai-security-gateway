@@ -17,6 +17,7 @@ This project implements a Defensive Gateway Architecture designed to act as an i
 
 ## 2. Architectural Blueprint & Data Flow
 
+```text
 +-----------------------------------------------------------------------------------+
 | 1. CLIENT CONSUMPTION LAYER                                                       |
 |    - Open WebUI, Enterprise Chatbots, SOC Automation Scripts, Low-Code Pipelines  |
@@ -53,8 +54,6 @@ This project implements a Defensive Gateway Architecture designed to act as an i
 | 5. INFERENCE RUNTIME (Backend Engine)                                             |
 |    * Host-Isolated Inference Node (e.g., Ollama / vLLM / External Foundation API) |
 +-----------------------------------------------------------------------------------+
-
----
 
 ## 3. Threat Modeling & Framework Alignment
 
