@@ -1,6 +1,6 @@
 # Enterprise AI Security Gateway: Reference Architecture & Implementation Guide
 
-An architectural reference implementation and hands-on deployment guide for an **AI Security Gateway** sitting between client applications and large language model backends. This gateway enforces **inline PII redaction**, **virtual API key governance**, **least-privilege model scoping**, and **edge rate limiting** to mitigate critical vulnerabilities outlined in the OWASP Top 10 for LLMs and the NIST AI Risk Management Framework (AI RMF 1.0).
+An architectural reference implementation and hands-on deployment guide for an **AI Security Gateway**. Built and validated in a sandboxed lab environment with enterprise production patterns in mind, this project demonstrates how to enforce **inline PII redaction**, **virtual API key governance**, **least-privilege model scoping**, and **edge rate limiting** to mitigate critical vulnerabilities from the OWASP Top 10 for LLMs and NIST AI RMF 1.0.
 
 ---
 
