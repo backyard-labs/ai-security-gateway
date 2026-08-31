@@ -1,0 +1,16 @@
+model_list:
+  - model_name: local-llama
+    litellm_params:
+      model: ollama/qwen3.5:9b
+      api_base: http://host.docker.internal:11434
+
+litellm_settings:
+  callbacks: ["presidio"]
+  presidio:
+    analyzer_url: "http://presidio-analyzer:3000"
+    anonymizer_url: "http://presidio-anonymizer:3000"
+    redact_pii: true
+
+general_settings:
+  database_url: "postgresql://litellm_admin:db_secure_pass@postgres:5432/litellm_db"
+  master_key: "sk-admin-master-key"
