@@ -83,7 +83,9 @@ Microsoft Presidio is an open-source data protection framework.
 All transaction metadata—including virtual key identities, latency metrics, token consumption, and timestamped forensic logs—is committed to an isolated PostgreSQL relational store. This provides accountability without storing unredacted sensitive payloads.
 
 ---
+## 5. Repository Structure
 
+```text
 ai-security-gateway/
 ├── config/
 │   └── litellm_config.yaml    # Gateway routing policies, callback hooks, and settings
@@ -92,7 +94,7 @@ ai-security-gateway/
 ├── .gitignore                 # Exclusion list preventing secrets/databases from entering Git
 ├── docker-compose.yml         # Container orchestration manifest for all gateway services
 └── README.md                  # Comprehensive documentation and operational guide
-
+```
 ---
 
 ## 6. Configuration & Deployment Guide
