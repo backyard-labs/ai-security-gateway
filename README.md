@@ -54,7 +54,7 @@ This project implements a **Defensive Gateway Architecture** designed to act as 
 | 5. INFERENCE RUNTIME (Backend Engine)                                             |
 |    * Host-Isolated Inference Node (e.g., Ollama / vLLM / External Foundation API) |
 +-----------------------------------------------------------------------------------+
-
+```
 ---
 
 ## 3. Threat Modeling & Framework Alignment
