@@ -13,13 +13,22 @@ guardrails:
       presidio_anonymizer_api_base: "http://presidio-anonymizer:3000"
       default_on: true
 
+  - guardrail_name: "prompt-keyword-filter"
+    litellm_params:
+      guardrail: litellm_content_filter
+      mode: "pre_call"
+      default_on: true
+      blocked_words:
+        - keyword: "SYSTEM OVERRIDE"
+          action: "BLOCK"
+        - keyword: "AUTH_BYPASS"
+          action: "BLOCK"
+        - keyword: "Ignore all previous"
+          action: "BLOCK"
+
 litellm_settings:
   drop_params: true
   set_verbose: false
-  banned_keywords:
-    - "SYSTEM OVERRIDE"
-    - "AUTH_BYPASS"
-    - "Ignore all previous"
 
 general_settings:
   database_url: os.environ/DATABASE_URL
