@@ -3,6 +3,7 @@ model_list:
     litellm_params:
       model: ollama_chat/qwen3.5:9b
       api_base: os.environ/OLLAMA_API_BASE
+      reasoning_effort: "none"
 
 guardrails:
   - guardrail_name: "presidio-pii-guard"
@@ -29,6 +30,7 @@ guardrails:
 litellm_settings:
   drop_params: true
   set_verbose: false
+  callbacks: reasoning_policy.reasoning_policy
 
 general_settings:
   database_url: os.environ/DATABASE_URL

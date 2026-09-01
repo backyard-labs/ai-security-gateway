@@ -15,6 +15,7 @@ services:
       - PRESIDIO_ANONYMIZER_API_BASE=http://presidio-anonymizer:3000
     volumes:
       - ./config/litellm_config.yaml:/app/config.yaml:ro
+      - ./config/reasoning_policy.py:/app/reasoning_policy.py:ro
     command: ["--config", "/app/config.yaml", "--port", "4000", "--host", "0.0.0.0"]
     depends_on:
       - litellm-db
