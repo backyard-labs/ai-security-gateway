@@ -38,15 +38,11 @@ services:
     image: mcr.microsoft.com/presidio-analyzer@sha256:286e3fa7f3a7426e775e8564fe1870f1ba8f999d3ab8bbb8cc46a44355d9d6e9
     container_name: presidio-analyzer
     restart: unless-stopped
-    ports:
-      - "5002:3000"
 
   presidio-anonymizer:
     image: mcr.microsoft.com/presidio-anonymizer@sha256:a10a12a2a613d13cf29d3ad3641e3258444dd8c90403dd644a0a114c472c2483
     container_name: presidio-anonymizer
     restart: unless-stopped
-    ports:
-      - "5001:3000"
 
   litellm-db:
     image: postgres@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685
